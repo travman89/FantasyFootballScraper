@@ -3,13 +3,15 @@ import cheerio from "cheerio";
 import "dotenv/config";
 import { positionConstants, playerData } from "./constants";
 import { parseRowDataByPosition, writeRanks } from "./helpers";
-const AxiosInstance = axios.create();
+
 const positionKey: string = process.argv[2];
 
 if (!(positionKey in positionConstants)) {
   console.log("Invalid position type");
   process.exit(1);
 }
+
+const AxiosInstance = axios.create();
 
 let standardRankings: playerData[] = [];
 let fullPPRRankings: playerData[] = [];
