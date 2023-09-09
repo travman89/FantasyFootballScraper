@@ -1,3 +1,8 @@
+const baseHeading = [
+  { id: "rank", title: "rank" },
+  { id: "name", title: "name" },
+  { id: "team", title: "team" },
+];
 const positionConstants: any = {
   all: {
     length: 2,
@@ -14,79 +19,56 @@ const positionConstants: any = {
     length: 1,
     url: process.env.QB_URL,
     standardFile: "qbStandard.csv",
-    csvHeaing: [
-      { id: "rank", title: "rank" },
-      { id: "name", title: "name" },
-      { id: "team", title: "team" },
-    ],
+    csvHeaing: [...baseHeading],
   },
   rb: {
     length: 2,
     url: process.env.RB_URL,
     standardFile: "rbStandard.csv",
     pprFile: "rbPPR.csv",
-    csvHeaing: [
-      { id: "rank", title: "rank" },
-      { id: "name", title: "name" },
-      { id: "team", title: "team" },
-    ],
+    csvHeaing: [...baseHeading],
   },
   wr: {
     length: 2,
     url: process.env.WR_URL,
     standardFile: "wrStandard.csv",
     pprFile: "wrPPR.csv",
-    csvHeaing: [
-      { id: "rank", title: "rank" },
-      { id: "name", title: "name" },
-      { id: "team", title: "team" },
-    ],
+    csvHeaing: [...baseHeading],
   },
   te: {
     length: 1,
     url: process.env.TE_URL,
     standardFile: "teStandard.csv",
     pprFile: "tePPR.csv",
-    csvHeaing: [
-      { id: "rank", title: "rank" },
-      { id: "name", title: "name" },
-      { id: "team", title: "team" },
-    ],
+    csvHeaing: [...baseHeading],
   },
   def: {
     length: 1,
     url: process.env.DEF_URL,
     standardFile: "defStandard.csv",
-    csvHeaing: [
-      { id: "rank", title: "rank" },
-      { id: "name", title: "name" },
-      { id: "team", title: "team" },
-    ],
+    csvHeaing: [...baseHeading],
   },
 };
 
-interface playerData {
+interface Player {
   name: string;
-  rank: number;
-  thirdOption?: string;
   position?: string;
   team?: string;
 }
-
-interface ParsePlayerData {
-  name: string;
+interface playerData extends Player {
   rank: number;
-  position?: string;
-  team?: string;
+  thirdOption?: string;
+}
+
+interface ParsePlayerData extends Player {
+  rank: number;
   standardRank?: number | string;
   pprRank?: number;
 }
 
-interface RowData {
-  name: string;
+interface RowData extends Player {
   rank: string;
-  team?: string;
-  position?: string;
+  name: string;
 }
 
 type PlayerObject = { [key: string]: ParsePlayerData };
