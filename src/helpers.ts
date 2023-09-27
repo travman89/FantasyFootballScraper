@@ -22,7 +22,7 @@ const writeRanks = async (
   csvWriter
     .writeRecords(ranks)
     .then(() =>
-      console.log(`${process.argv[2]} ranks CSV file was written successfully`)
+      console.log(`${positionKey} ranks CSV file was written successfully`)
     )
     .catch((err: Error) => {
       console.error(err);
@@ -31,7 +31,7 @@ const writeRanks = async (
 };
 
 const parseRowDataByPosition = (data: playerData, positionKey: string) => {
-  if (positionKey === "all") {
+  if (positionKey === "ros") {
     return {
       rank: data.rank,
       name: data.name,
@@ -55,7 +55,7 @@ const getStandardPositionData = (
   row: ParsePlayerData | RowData,
   positionKey: string
 ) => {
-  if (positionKey === "all") {
+  if (positionKey === "ros") {
     return { position: row.position };
   } else {
     return { team: row.team };

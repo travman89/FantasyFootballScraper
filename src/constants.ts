@@ -4,11 +4,11 @@ const baseHeading = [
   { id: "team", title: "team" },
 ];
 const positionConstants: any = {
-  all: {
+  ros: {
     length: 2,
-    url: process.env.TOP_160,
-    standardFile: "allStandard.csv",
-    pprFile: "allPPR.csv",
+    url: process.env.ROS_URL,
+    standardFile: "rosStandard.csv",
+    pprFile: "rosPPR.csv",
     csvHeaing: [
       { id: "rank", title: "rank" },
       { id: "name", title: "name" },
