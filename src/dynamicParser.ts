@@ -49,6 +49,7 @@ const scrapePosition = async (positionKey: string) => {
 };
 
 const main = async () => {
+  await scrapePosition("ros");
   await scrapePosition("wr");
   await scrapePosition("rb");
   await scrapePosition("qb");
