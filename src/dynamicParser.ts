@@ -6,10 +6,9 @@ import { parseRowDataByPosition, writeRanks } from "./helpers";
 
 const AxiosInstance = axios.create();
 
-let standardRankings: playerData[] = [];
-let fullPPRRankings: playerData[] = [];
-
 const scrapePosition = async (positionKey: string) => {
+  let standardRankings: playerData[] = [];
+  let fullPPRRankings: playerData[] = [];
   await AxiosInstance.get(positionConstants[positionKey].url)
     .then((res) => {
       const html = res.data;
